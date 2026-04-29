@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, reactive } from 'vue';
 import TodoForm from './components/TodoForm.vue';
 import TodoList from './components/TodoList.vue';
 import type { Todo } from './types/todo';
 
 const todos = ref<Todo[]>([]);
 const filter = ref<'all' | 'active' | 'completed'>('all');
+
+const count = ref(0)
+const name = ref("Shiela")
+const user = reactive({age: 28})
 
 const addTodo = (title: string) => {
   const newTodo: Todo = {
@@ -58,6 +62,8 @@ const filteredTodos = computed(() => {
     @toggle-todo="toggleTodo"
     @update-todo="updateTodo"/>
   </main>
+
+  <button @click="count++">{{ count }}</button>
 </template>
 
 <style scoped></style>
